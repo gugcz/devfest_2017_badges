@@ -60,7 +60,7 @@ def main():
                 images.add(company_logo)
 
             twitter = normalize(r["Twitter nickname"])
-            if not twitter.startswith('@'):
+            if twitter and not twitter.startswith('@'):
                 twitter = '@' + twitter
 
             ticket = {
