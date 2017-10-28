@@ -63,9 +63,13 @@ def main():
             if twitter and not twitter.startswith('@'):
                 twitter = '@' + twitter
 
+            name = normalize(r["Ticket Full Name"])
+            if not name:
+                name = normalize(r["Order Name"])
+
             ticket = {
                 "Type": t,
-                "Name": normalize(r["Ticket Full Name"]),
+                "Name": name,
                 "Company": company,
                 "Company Logo": company_logo,
                 "Job Title": normalize(r["Job Title"]),
