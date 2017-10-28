@@ -80,8 +80,6 @@ def main():
         dw = csv.DictWriter(f, fieldnames=result[0].keys())
         dw.writeheader()
         dw.writerows(result)
-        # writer = csv.writer(f)
-        # writer.writerows(result)
 
     with open("logos.txt", "w") as f:
         for i in images:
