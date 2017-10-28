@@ -50,7 +50,8 @@ def main():
 
             company = normalize(r["Company/Organization"])
             company_logo = ""
-            if r["Ticket"].startswith("Company-funded"):
+            if r["Ticket"].startswith("Company-funded") or \
+                    r["Ticket"].startswith("Partner ticket"):
                 company_logo = company
                 company = ""
                 if not company_logo:
