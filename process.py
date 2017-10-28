@@ -59,19 +59,23 @@ def main():
                 company_logo = image(company_logo)
                 images.add(company_logo)
 
+            twitter = normalize(r["Twitter nickname"])
+            if not twitter.startswith('@'):
+                twitter = '@' + twitter
+
             ticket = {
                 "Type": t,
                 "Name": normalize(r["Ticket Full Name"]),
                 "Company": company,
                 "Company Logo": company_logo,
                 "Job Title": normalize(r["Job Title"]),
-                "Interest 1": normalize(interests[0] if len(interests) > 0
-                                        else ""),
-                "Interest 2": normalize(interests[1] if len(interests) > 1
-                                        else ""),
-                "Interest 3": normalize(interests[2] if len(interests) > 2
-                                        else ""),
-                "Twitter": normalize(r["Twitter nickname"]),
+                "Interest 1":
+                    normalize(interests[0] if len(interests) > 0 else ""),
+                "Interest 2":
+                    normalize(interests[1] if len(interests) > 1 else ""),
+                "Interest 3":
+                    normalize(interests[2] if len(interests) > 2 else ""),
+                "Twitter": twitter,
             }
 
             # print(ticket)
