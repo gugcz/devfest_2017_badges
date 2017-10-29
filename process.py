@@ -67,12 +67,15 @@ def main():
             if not name:
                 name = normalize(r["Order Name"])
 
+            job = normalize(r["Job Title"])
+
             ticket = {
                 "Type": t,
-                "Name": name,
-                "Company": company,
+                "Name": "{:.15}…".format(name) if len(name) > 16 else name,
+                "Company": "{:.30}…".format(company) if len(
+                    company) > 31 else company,
                 "Company Logo": company_logo,
-                "Job Title": normalize(r["Job Title"]),
+                "Job Title": "{:.20}…".format(job) if len(job) > 21 else job,
                 "Interest 1":
                     normalize(interests[0] if len(interests) > 0 else ""),
                 "Interest 2":
