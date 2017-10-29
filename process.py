@@ -71,7 +71,7 @@ def main():
 
             ticket = {
                 "Type": t,
-                "Name": "{:.15}…".format(name) if len(name) > 16 else name,
+                "Name": "{:.21}…".format(name) if len(name) > 22 else name,
                 "Company": "{:.30}…".format(company) if len(
                     company) > 31 else company,
                 "Company Logo": company_logo,
