@@ -3,7 +3,7 @@ import csv
 
 
 def normalize(v):
-    return v.replace("-", "")
+    return v.strip('-')
 
 
 def image(v):
