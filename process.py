@@ -60,6 +60,7 @@ def main():
                 images.add(company_logo)
 
             twitter = normalize(r["Twitter nickname"])
+            twitter = twitter.replace("https://twitter.com/", "")
             if twitter and not twitter.startswith('@'):
                 twitter = '@' + twitter
 
