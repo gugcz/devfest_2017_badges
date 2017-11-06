@@ -9,6 +9,9 @@ def normalize(v):
 def image(v):
     table = str.maketrans("áčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ",
                           "acdeeinorstuuyzACDEEINORSTUUYZ")
+    if v == "":
+        return ""
+    
     return "img/{}.png".format(
         v.replace(' ', '_').replace(',', '')
             .replace('.', '').lower().translate(table))
@@ -17,7 +20,7 @@ def image(v):
 def main():
     result = []
     images = set()
-    with open('sample_data_from_tito.csv', encoding="utf-8") as csvfile:
+    with open('data_from_tito.csv', encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
         for r in reader:
             # from headers
@@ -73,10 +76,10 @@ def main():
             ticket = {
                 "Type": t,
                 "Name": "{:.21}…".format(name) if len(name) > 22 else name,
-                "Company": "{:.30}…".format(company) if len(
-                    company) > 31 else company,
+                "Company": "{:.37}…".format(company) if len(
+                    company) > 38 else company,
                 "Company Logo": company_logo,
-                "Job Title": "{:.20}…".format(job) if len(job) > 21 else job,
+                "Job Title": "{:.26}…".format(job) if len(job) > 27 else job,
                 "Interest 1":
                     normalize(interests[0] if len(interests) > 0 else ""),
                 "Interest 2":
@@ -89,7 +92,7 @@ def main():
             # print(ticket)
             result.append(ticket)
 
-    with open('out.csv', 'w', encoding="utf-8") as f:
+    with open('data_for_badges.csv', 'w', encoding="utf-8") as f:
         dw = csv.DictWriter(f, fieldnames=result[0].keys())
         dw.writeheader()
         dw.writerows(result)
